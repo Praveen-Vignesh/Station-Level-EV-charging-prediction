@@ -1,0 +1,18 @@
+{
+  "rows_raw": 6500,
+  "dropped": {
+    "duplicate session_id": 0,
+    "missing station / time / energy": 0,
+    "energy <= 0 kWh": 0,
+    "disconnect not after connection": 0,
+    "longer than 72 h": 10,
+    "(kept) doneChargingTime unusable, used disconnect": 7,
+    "(kept) doneChargingTime after disconnect, clamped": 267
+  },
+  "rows_clean": 6490,
+  "stations": 53,
+  "first_connection": "2018-04-25T04:08:04-07:00",
+  "last_connection": "2018-08-08T09:45:13-07:00",
+  "total_kwh": 58785.119,
+  "timezone": "America/Los_Angeles"
+}

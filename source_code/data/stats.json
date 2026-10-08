@@ -1,0 +1,42 @@
+{
+  "sessions": 6490,
+  "stations": 53,
+  "hours": 2555,
+  "hours_with_features": 2387,
+  "first_hour": "2018-04-25T04:00:00-07:00",
+  "last_hour": "2018-08-09T14:00:00-07:00",
+  "total_kwh": 58785.12,
+  "site_zero_share": 0.0129,
+  "site_mean_kwh_per_h": 23.01,
+  "site_peak_kwh_per_h": 79.09,
+  "station_zero_share_mean": 0.7912,
+  "station_zero_share_median": 0.7824,
+  "station_zero_share_min": 0.5464,
+  "top_stations": [
+    {
+      "station_id": "2-39-139-28",
+      "total_kwh": 2408.58,
+      "zero_share": 0.5464
+    },
+    {
+      "station_id": "2-39-91-437",
+      "total_kwh": 2203.06,
+      "zero_share": 0.6928
+    },
+    {
+      "station_id": "2-39-131-30",
+      "total_kwh": 2028.46,
+      "zero_share": 0.5871
+    },
+    {
+      "station_id": "2-39-95-27",
+      "total_kwh": 1853.13,
+      "zero_share": 0.7092
+    },
+    {
+      "station_id": "2-39-79-377",
+      "total_kwh": 1849.35,
+      "zero_share": 0.6791
+    }
+  ]
+}

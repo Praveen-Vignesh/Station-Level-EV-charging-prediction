@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EV Charging Demand Forecast</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>EV Charging Demand Forecasting</h1>
+    <p class="sub" id="subtitle">Loading…</p>
+  </header>
+
+  <main>
+    <div id="error" class="error" hidden></div>
+
+    <section>
+      <h2>Held-out accuracy <span class="hint">lower is better</span></h2>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <section>
+      <h2>Forecast vs actual</h2>
+      <div class="controls">
+        <label>Window
+          <select id="windowSel">
+            <option value="168">1 week</option>
+            <option value="72">3 days</option>
+            <option value="all">Whole test period</option>
+          </select>
+        </label>
+        <label>Start
+          <input type="range" id="windowPos" min="0" max="0" value="0">
+        </label>
+        <span id="windowLabel" class="hint"></span>
+      </div>
+      <div class="chart tall"><canvas id="forecastChart"></canvas></div>
+    </section>
+
+    <div class="grid2">
+      <section>
+        <h2>Error by hour of day <span class="hint">MAE, kWh/h</span></h2>
+        <div class="chart"><canvas id="hourChart"></canvas></div>
+      </section>
+      <section>
+        <h2>What the forest relies on <span class="hint">feature importance</span></h2>
+        <div class="chart"><canvas id="importanceChart"></canvas></div>
+      </section>
+    </div>
+
+    <section>
+      <h2>Where the accuracy comes from <span class="hint">same forest, fewer features</span></h2>
+      <div class="tablewrap">
+        <table id="ablationTable">
+          <thead><tr><th>Features used</th><th class="num">MAE (kWh/h)</th>
+            <th class="num">vs baseline</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note">Hourly demand is rebuilt from sessions using each session's end time,
+        so the 1 h and 2 h lags can carry slightly more than a live meter would know.
+        The rows without them are the conservative reading.</p>
+    </section>
+
+    <section>
+      <h2>Busiest stations <span class="hint">each station has its own model</span></h2>
+      <div class="tablewrap">
+        <table id="stationTable">
+          <thead>
+            <tr>
+              <th>Station</th><th class="num">Zero-demand hours</th>
+              <th class="num">Baseline MAE</th><th class="num">Random Forest MAE</th>
+              <th class="num">vs baseline</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note" id="stationNote"></p>
+    </section>
+  </main>
+
+  <footer>
+    Data: Caltech ACN-Data · chronological 80/20 split · every feature looks backward only.
+    Decision-support prototype, not an operational controller.
+  </footer>
+
+  <script src="chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
